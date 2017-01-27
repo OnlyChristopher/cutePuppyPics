@@ -1,0 +1,40 @@
+<ion-header class="header-brand">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <div class="logoDiv">
+        <ion-icon name="egg" item-left></ion-icon>
+      </div>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="page-brand">
+  <ion-card *ngFor="let article of articles">
+    <ion-item class="item-text-wrap">
+      <ion-avatar item-left>
+        <ion-icon name="ionic" item-left></ion-icon>
+      </ion-avatar>
+      <h2 class="wrap" (click)="viewArticle(article)">{{article.title.$t}}</h2>
+    </ion-item>
+    <img src="{{getImage(article.content.$t)}}" *ngIf="getImage(article.content.$t)">
+    <ion-card-content>
+      <p [innerHTML]="getContentSnippet(article.content.$t)"></p>
+      <div class="date">{{article.published.$t | date}}</div>
+    </ion-card-content>
+    <ion-row>
+      <ion-col>
+        <a class="tag" *ngFor="let category of article.category" (click)='getTagData(tag)'>
+          {{category.term}}
+        </a>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>
+
+<!--<ion-content padding class="action-sheets-basic-page">-->
+  <!--<button ion-button block (click)="openMenu()">-->
+    <!--Show Action Sheet-->
+  <!--</button>-->
+<!--</ion-content>-->

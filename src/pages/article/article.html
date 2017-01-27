@@ -1,0 +1,35 @@
+<ion-header class="header-brand">
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            <div class="logoDiv">
+                <ion-icon name="egg" item-left></ion-icon>
+            </div>
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding class="page-brand article">
+    <ion-card>
+        <ion-item class="item-text-wrap">
+            <ion-avatar item-left>
+                <ion-icon name="ionic" item-left></ion-icon>
+            </ion-avatar>
+            <h2 class="wrap">{{article.title.$t}}</h2>
+        </ion-item>
+        <!--<img src="{{getImage(article.content)}}" *ngIf="getImage(article.content)">-->
+        <ion-card-content>
+            <p [innerHTML]='article.content.$t'>
+            </p>
+            <div class="date">{{article.published.$t | date}}</div>
+        </ion-card-content>
+        <ion-row>
+            <ion-col>
+                <a class="tag new" *ngFor="let tag of article.categories" (click)='getTagData(tag)'>
+                    {{tag}}
+                </a>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+</ion-content>
